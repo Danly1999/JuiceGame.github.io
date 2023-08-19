@@ -20,7 +20,7 @@ const DemoShader = {
     uniform sampler2D uTexture; // uv
 
     void main() { 
-        vec4 textureColor = texture2D(uTexture, fract(vUV+_Time));
+        vec4 textureColor = texture2D(uTexture, vUV);
         gl_FragColor = textureColor;
     }`
 
