@@ -9,11 +9,11 @@
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
         camera.position.set( 0, 0, 0 );
-        const renderer = new THREE.WebGLRenderer();
+        const renderer = new THREE.WebGLRenderer({antialias:true});
         scene.background = new THREE.Color( 0xFF8080 );
         renderer.setSize( window.innerWidth, window.innerHeight );
         document.getElementById("background").appendChild( renderer.domElement );
-
+        const progressBar = document.getElementById('progress-bar');
         const geometry = new THREE.BoxGeometry( 10, 10 ,10);
 
 
@@ -62,7 +62,20 @@
 
 					scene.add( object );
 
-				} );
+				}, onProgress);
+        function onProgress(xhr) {
+            const percentLoaded = (xhr.loaded / xhr.total) * 100;
+            progressBar.style.width = `${percentLoaded}%`;
+            if(Math.round(percentLoaded) != 100)
+            {
+                progressBar.innerText = `${Math.round(percentLoaded)}% loaded`;
+                
+            }else
+            {
+                progressBar.innerText = null;
+
+            }
+        }
         
         camera.position.z = 100;
         const controls = new OrbitControls(camera,renderer.domElement);
