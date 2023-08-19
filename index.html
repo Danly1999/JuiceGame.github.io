@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <title>My Simple HTML Page</title>
 </head>
+<script type="importmap">
+    {
+        "imports": {
+            "three": "./three.js-master/build/three.module.js",
+            "three/addons/": "./three.js-master/examples/jsm/"
+            
+        }
+    }
+</script>
+
+<script type="module" src="./three.js-master/examples/web.js">
+</script>
+
 <body>
     <h1>Hello, World!</h1>
-    <p>This is a simple HTML page.</p>
+    <div id="two" class="red" ></div>
+    <div id="two3" class="red" ></div>
     <ul>
         <li>Item 1</li>
         <li>Item 2</li>
