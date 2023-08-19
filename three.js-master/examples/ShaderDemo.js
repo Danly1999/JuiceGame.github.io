@@ -12,7 +12,7 @@
         const renderer = new THREE.WebGLRenderer();
         scene.background = new THREE.Color( 0xFF8080 );
         renderer.setSize( window.innerWidth, window.innerHeight );
-        document.body.appendChild( renderer.domElement );
+        document.getElementById("background").appendChild( renderer.domElement );
 
         const geometry = new THREE.BoxGeometry( 10, 10 ,10);
 
